@@ -31,7 +31,7 @@ Go to your repository on github.com and create a new issue.
 - Any edge cases (empty list, all complete)
 
 <details>
-<summary>Stuck? Example issue</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this example issue</i></summary>
 
 **Title:** `Add todo count to browser tab title`
 

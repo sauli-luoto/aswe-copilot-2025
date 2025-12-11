@@ -31,8 +31,9 @@ uv run uvicorn app.main:app --reload
 
 **Your task:** Craft a prompt describing this bug to Copilot. Focus on the symptom, not the fix.
 
+<br/>
 <details>
-<summary>Stuck? Try this prompt</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this prompt</i></summary>
 
 > ```md
 > @workspace Quick-add todos don't have a default priority.
@@ -45,12 +46,15 @@ You may find that you need to ask Copilot again to actually implement the fix af
 > ```
 </details>
 
+<br/>
 <details>
 <summary>Hint (if Copilot can't find it)</summary>
 
 File: `todo-app/src/app/routes/todos.py` — `create_todo` function.
 Add `priority="low"` when creating the Todo object.
 </details>
+
+<br/>
 
 **Verify:** New quick-add todos show priority "low" when edited.
 
@@ -66,8 +70,9 @@ Add `priority="low"` when creating the Todo object.
 
 **Your task:** Describe the symptom to Copilot. What's the user experiencing?
 
+<br/>
 <details>
-<summary>Stuck? Try this prompt</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this prompt</i></summary>
 
 > ```md
 > @workspace Due dates aren't saving when I edit todos.
@@ -77,6 +82,7 @@ Add `priority="low"` when creating the Todo object.
 Again, you may need to ask Copilot to implement the fix after it identifies the problem.
 </details>
 
+<br/>
 <details>
 <summary>Hint (if Copilot can't find it)</summary>
 
@@ -84,6 +90,8 @@ File: `todo-app/src/app/routes/todos.py` — `update_todo` function.
 HTML date inputs send `"2024-01-15"` format.
 Change `"%Y-%m-%dT%H:%M"` to `"%Y-%m-%d"`.
 </details>
+
+<br/>
 
 **Verify:** Due dates persist after editing.
 
@@ -99,8 +107,9 @@ Change `"%Y-%m-%dT%H:%M"` to `"%Y-%m-%d"`.
 
 **Your task:** This is an HTMX issue. How would you describe it to Copilot?
 
+<br/>
 <details>
-<summary>Stuck? Try this prompt</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this prompt</i></summary>
 
 > ```md
 > @workspace When I delete a todo, the sidebar count doesn't update.
@@ -110,6 +119,7 @@ Change `"%Y-%m-%dT%H:%M"` to `"%Y-%m-%d"`.
 Again, you may need to ask Copilot to implement the fix after it identifies the problem.
 </details>
 
+<br/>
 <details>
 <summary>Hint (if Copilot can't find it)</summary>
 
@@ -117,6 +127,8 @@ File: `todo-app/src/app/routes/todos.py` — `delete_todo` function.
 The function just returns `Response(status_code=200)` without updating the sidebar.
 Fix: Return an HTML response with an OOB swap to update the count, similar to how `toggle_todo` does it.
 </details>
+
+<br/>
 
 **Verify:** Sidebar count updates immediately after deletion.
 
@@ -133,7 +145,7 @@ Fix: Return an HTML response with an OOB swap to update the count, similar to ho
 **Your task:** This is a datetime comparison bug. Describe what you observe.
 
 <details>
-<summary>Stuck? Try this prompt</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this prompt</i></summary>
 
 > ```md
 > @workspace The overdue styling is wrong. Todos due today are showing
@@ -142,6 +154,8 @@ Fix: Return an HTML response with an OOB swap to update the count, similar to ho
 
 Again, you may need to ask Copilot to implement the fix after it identifies the problem.
 </details>
+
+<br/>
 
 <details>
 <summary>Hint (if Copilot can't find it)</summary>
@@ -155,6 +169,8 @@ return todo.due_date.date() < today  # for is_overdue
 return todo.due_date.date() == today  # for is_due_today
 ```
 </details>
+
+<br/>
 
 **Verify:** Yesterday=red (overdue), today=orange, tomorrow=normal.
 
@@ -190,8 +206,10 @@ Now that all bugs are fixed, practice writing tests with Copilot.
 - What pattern do existing tests follow?
 - Use `/tests` slash command or describe what you need?
 
+<br/>
+
 <details>
-<summary>Stuck? Try this prompt</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this prompt</i></summary>
 
 > ```md
 > @workspace Add a test that verifies new todos created without explicit priority get "low" as the default. 
@@ -199,6 +217,8 @@ Now that all bugs are fixed, practice writing tests with Copilot.
 > Follow the existing test patterns in tests/test_todos.py.
 > ```
 </details>
+
+<br/>
 
 **Verify:** Run `uv run pytest tests/test_todos.py -v` — your new test should pass.
 

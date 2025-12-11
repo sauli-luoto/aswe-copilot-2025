@@ -48,8 +48,10 @@ The plan should include:
 - How HTMX will handle the filter requests
 - Research should be done via web searches and Context7 MCP
 
+<br/> 
+
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
 > I want to add priority filtering to the todo list. Before implementing:
@@ -69,17 +71,27 @@ The plan should include:
 >    - Styling: Active state for selected filter
 >    - Testing: What tests to add
 >
-> Save the plan to docs/plans/priority-filter.md
 > Do NOT implement yet - just create the plan.
 > ```
+
+When done, select _"Open in Editor"_ to view/edit the generated plan.
+
+Then, ask Copilot to save the plan (making sure you've switched to the **Agent** agent):
+> ```md
+> Save the plan to docs/plans/priority-filter.md
+> ```
+
 </details>
+
 
 ### Step 3: Review the Plan
 
-Use the `/review-plan` command (or ask Copilot directly) to review the generated plan.
+Use the `/review-plan` command (or ask Copilot directly) to review the generated plan. 
+Before doing this, start a new Copilot Chat to ensure a more unbiased review.
+
 
 > ```md
-> Review #file:docs/plans/priority-filter.md for:
+> /review-plan #file:docs/plans/priority-filter.md for:
 > - Completeness (are all aspects covered?)
 > - Consistency with existing codebase patterns
 > - Potential issues or missing edge cases
@@ -88,7 +100,7 @@ Use the `/review-plan` command (or ask Copilot directly) to review the generated
 
 ### Step 4: Refine the Plan
 
-Based on the review feedback, update the plan. Ask Copilot to make specific adjustments:
+Based on the review feedback, update the plan. Either select the appropriate suggested action or ask Copilot to make specific adjustments:
 
 > ```md
 > Update the plan in #file:docs/plans/priority-filter.md to address:
@@ -108,7 +120,7 @@ Based on the review feedback, update the plan. Ask Copilot to make specific adju
 **Your task:** Instruct Copilot to create a feature branch for your work.
 
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
 > Create a new git branch called feature/priority-filter and switch to it.
@@ -125,7 +137,7 @@ Reference the plan file and instruct Copilot to:
 - Follow existing code patterns in the codebase
 
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
 > Implement the priority filtering feature following the plan in
@@ -139,6 +151,8 @@ Reference the plan file and instruct Copilot to:
 > Follow existing patterns in @workspace for code style and conventions.
 > ```
 </details>
+
+<br/>
 
 ### Step 3: Manual Testing
 
@@ -159,9 +173,9 @@ uv run uvicorn app.main:app --reload
 
 ## Phase 3: Verify
 
-### Step 1: Add Tests
+### Step 1: Add Tests, or verify that appropriate tests were added
 
-**Your task:** Instruct Copilot to add tests for the new filtering functionality.
+**Your task:** Instruct Copilot to add/verify tests for the new filtering functionality.
 
 Tests should cover:
 - Filter by each priority level (low, medium, high)
@@ -169,25 +183,32 @@ Tests should cover:
 - Filter combined with search query
 - Edge cases (empty results, no todos)
 
+<br/>
+
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
-> Add tests for the priority filtering feature in tests/test_todos.py.
+> Verify that appropriate tests for the priority filtering feature in tests/test_todos.py are present.
 >
-> Test cases needed:
+> Suggestions for tests to add:
 > - test_filter_by_priority_low
 > - test_filter_by_priority_high
 > - test_filter_all_shows_all_todos
 > - test_filter_with_search_query
 > - test_filter_empty_results
 >
+> Add additional tests as needed.
+>
 > Follow the existing test patterns in @workspace.
 > ```
 </details>
 
-Run the tests:
+<br/>
+
+Ask Copilot to run the tests, or run them manually:
 ```bash
+cd todo-app
 uv run pytest tests/test_todos.py -k filter -v
 ```
 
@@ -202,25 +223,34 @@ Use Chrome DevTools MCP to visually verify the feature. The MCP runs Chrome in *
 > 3. Take a screenshot showing the filter buttons
 > 4. Click the "High" filter and take another screenshot
 > 5. Verify only high-priority todos are shown
+>
+> Make sure the server is running locally before starting the MCP.
 > ```
 
 **Manual alternative:** If the MCP isn't available, test manually in your browser.
 
 ### Step 3: Local Code Review
 
-Use the `/review-code` command you created in Exercise 3 to review your changes before pushing.
+Use the `/review-code` command you created in Exercise 3 to review your changes before pushing. 
+Start a new Chat session (or open a new Chat Editor) to ensure clean context for unbiased review.
 
+<details>
+<summary>🤔 <i><b>Stuck?</b> Try this prompt</i></summary>
 > ```md
 > /review-code #folder:todo-app/src
 > ```
+</details>
+
+<br/>
 
 **After the review:**
+- Note that the agent changed to **code-reviewer**
 - Read through the findings (🔴 Critical, 🟡 Suggestions, ✅ Good Practices)
-- Address any **Critical** issues before proceeding
+- Address any **Critical** issues before proceeding (switch to the **Agent** agent first)
 - Suggestions can be addressed now or later
 
 <details>
-<summary>If you skipped Exercise 3 Part B...</summary>
+<summary><i>If you skipped Exercise 3 Part B...</i></summary>
 
 Ask Copilot directly:
 > ```md
@@ -236,8 +266,39 @@ Ask Copilot directly:
 
 **Your task:** Instruct Copilot to commit your changes, push the branch, and create a pull request.
 
+**But first:** Ensure you're logged into GitHub CLI:
+```bash
+gh auth login
+```
+
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🔐 <i><b>Optional:</b> Repository-scoped GitHub CLI access</i></summary>
+
+If you want to limit GitHub CLI access to only your forked repository (recommended for lab environments):
+
+1. Create a **Fine-Grained PAT** at https://github.com/settings/tokens?type=beta
+2. Configure the token:
+   - **Token name**: e.g., `lab-aswe-copilot`
+   - **Expiration**: Set appropriate duration for the lab
+   - **Repository access**: Select **"Only select repositories"** → choose your forked repo
+   - **Permissions**:
+     - Contents: Read and write
+     - Pull requests: Read and write
+     - Metadata: Read (auto-selected)
+3. Click **Generate token** and copy it
+4. Authenticate in your dev container:
+   ```bash
+   gh auth login --with-token
+   # Paste your token and press Enter
+   ```
+5. Verify: `gh auth status`
+
+</details>
+
+<br/>
+
+<details>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
 > Commit all changes with a descriptive message about the priority filtering feature.

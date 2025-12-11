@@ -166,7 +166,7 @@ If anything doesn't match your expectations:
 > ```
 
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
 > 1. Create branch feature/ai-suggestions

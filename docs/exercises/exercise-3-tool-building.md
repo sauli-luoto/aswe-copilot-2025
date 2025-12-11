@@ -122,8 +122,10 @@ Agents are stored in `.github/agents/` and define the AI's behavior and instruct
 - Outputs findings in categories: Critical, Suggestions, Good Practices
 - Includes line references and code examples
 
+<br/>
+
 <details>
-<summary>Stuck? Agent file structure</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this agent file structure</i></summary>
 
 **Frontmatter:**
 ```yaml
@@ -149,6 +151,8 @@ description: 'Senior engineer that performs comprehensive code reviews'
 - [GitHub Copilot Code Review sample](https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/review-code)
 </details>
 
+<br/>
+
 ### Step 2: Create the Command
 
 Commands are stored in `.github/prompts/` and provide a quick way to invoke agents.
@@ -168,8 +172,9 @@ Commands are stored in `.github/prompts/` and provide a quick way to invoke agen
 
 **Your task:** Create a simple command that references the agent:
 
+<br/>
 <details>
-<summary>Stuck? Command file structure</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this command file structure</i></summary>
 
 ```yaml
 ---
@@ -180,6 +185,8 @@ description: 'Run a comprehensive code review'
 
 Review the currently open file or selected code. Focus on the most important issues first.
 </details>
+
+<br/>
 
 **Reference:** [VS Code Prompt Files Documentation](https://code.visualstudio.com/docs/copilot/customization/prompt-files)
 

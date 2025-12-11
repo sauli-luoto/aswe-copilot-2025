@@ -26,6 +26,9 @@ In previous exercises, you used prompts like "add priority filtering." But compl
 
 Spec Kit installs **slash commands** in Copilot Chat. After setup, type `/` in Copilot Chat to see commands like `/speckit.specify`, `/speckit.plan`, etc. These commands guide you through the spec-driven workflow.
 
+### Quick start
+You can use the Spec Kit quick start guide [here](https://github.com/github/spec-kit/blob/main/docs/quickstart.md) for more details on installation and setup.
+
 ---
 
 ## Setup
@@ -42,6 +45,8 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 ### Initialize in Project
 
+Open a terminal at the root of the project/repository and run:
+
 ```bash
 specify init . --ai copilot --force
 ```
@@ -57,6 +62,8 @@ This creates:
 ## Part A: Create Constitution
 
 The constitution defines project rules that apply to ALL features.
+
+**NOTE:** For Spec Kit commands to appear in Copilot Chat, ensure you create a fresh chat window after initializing Spec Kit. You should see suggested commands (actions) like `speckit.constitution`.
 
 > ```md
 > /speckit.constitution Create principles for this todo app:
@@ -118,13 +125,6 @@ Answer the AI's questions:
 - `specs/001-quick-notes/plan.md` — Technical design
 - `specs/001-quick-notes/data-model.md` — Database schema
 
-### Validate Plan
-
-> ```md
-> /speckit.analyze
-> ```
-
-Fix any inconsistencies before proceeding.
 
 ---
 
@@ -146,6 +146,15 @@ Example task list:
 5. Add notes section to todo_item.html
 6. Add tests for notes CRUD
 7. Add tests for cascade delete
+
+
+### Optionally Validate Plan and Tasks
+
+> ```md
+> /speckit.analyze
+> ```
+
+Fix any inconsistencies before proceeding.
 
 ---
 
@@ -204,7 +213,7 @@ uv run pytest tests/ -v -k note
 > ```
 
 <details>
-<summary>Stuck? Try this approach</summary>
+<summary>🤔 <i><b>Stuck?</b> Try this approach</i></summary>
 
 > ```md
 > Create a new branch called feature/quick-notes, commit all changes,
